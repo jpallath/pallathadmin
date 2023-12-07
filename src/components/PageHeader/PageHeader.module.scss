@@ -1,0 +1,9 @@
+@import "../../mixins/index.scss";
+@import "../../mixins/colors";
+.pageHeader {
+  font-family: "Mallanna", sans-serif;
+  font-size: 6rem;
+  text-align: center;
+  margin: 1rem;
+  color: $text;
+}
