@@ -1,0 +1,13 @@
+@import "../../mixins/index.scss";
+@import "../../mixins/colors";
+
+.newLikeForm {
+  input {
+    margin: 5px;
+    border: transparent;
+    background-color: $background;
+    border-bottom: 5px solid $secondary;
+    color: $text;
+    outline: none;
+  }
+}
