@@ -2,12 +2,33 @@
 @import "../../mixins/colors";
 
 .newLikeForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
   input {
-    margin: 5px;
     border: transparent;
     background-color: $background;
-    border-bottom: 5px solid $secondary;
+    border-bottom: 5px solid $primary;
     color: $text;
     outline: none;
+  }
+  button {
+    background: $primary;
+    border-radius: 44px;
+    border: transparent;
+    color: $text;
+  }
+}
+
+.likedData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $text;
+  img {
+    width: 200px;
   }
 }

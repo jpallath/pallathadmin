@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./NewLikeForm.module.scss";
 export const NewLikeForm = () => {
   const [like, setLike] = useState("");
+  const [likedData, setLikedData] = useState({ title: "", image: "" });
   const fetchFunction = async (endpoint, method, data) => {
     try {
-      console.log(JSON.stringify(data));
       const response = await fetch(endpoint, {
         method,
         headers: {
@@ -24,18 +24,32 @@ export const NewLikeForm = () => {
         "https://ge3tyb1a3k.execute-api.us-east-1.amazonaws.com/staging/likes",
         "POST",
         data
-      ).then((response) => {
-        console.log(response);
+      ).then(async (response) => {
         return response.json();
       });
+      setLikedData(JSON.parse(fetchLikes.body));
     } catch (err) {
       console.error(err);
     }
   };
+
   return (
     <div className={styles.newLikeForm}>
-      <input value={like} onChange={(e) => setLike(e.target.value)} />
-      <button onClick={submitLike}>Submit</button>
+      <div>
+        <input value={like} onChange={(e) => setLike(e.target.value)} />
+        <button onClick={submitLike}>Submit</button>
+      </div>
+      <LikedData data={likedData} />
+    </div>
+  );
+};
+
+const LikedData = ({ data }) => {
+  return (
+    <div className={styles.likedData}>
+      <img src={data.image} alt={data.title} />
+      <h3>{data.title}</h3>
+      <p>{data.url}</p>
     </div>
   );
 };
